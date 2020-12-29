@@ -1,0 +1,12 @@
+@import "~normalize-scss";
+@include normalize();
+
+@import "block/variables";
+@import "block/layout";
+@import "block/base";
+@import "block/buttons";
+@import "block/auth";
+@import "block/header";
+@import "block/form";
+@import "block/not-found";
+

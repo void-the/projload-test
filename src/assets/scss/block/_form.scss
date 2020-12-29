@@ -1,0 +1,94 @@
+.el-form .row {
+  display: flex;
+}
+
+.el-input {
+  width: 100% !important;
+
+  &--small {
+    width: 40px !important;
+    height: 32px !important;
+
+    .el-input__inner {
+      padding: 0 14px !important;
+    }
+  }
+
+  &__inner {
+    padding: 0 12px 0 24px !important;
+    border: $border-main !important;
+    border-radius: 32px !important;
+    text-overflow: ellipsis;
+    text-align: left !important;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: $color-text !important;
+    }
+
+    &::-webkit-input-placeholder {
+      color: $color-placeholder !important;
+    }
+
+    &::-moz-placeholder {
+      color: $color-placeholder !important;
+      opacity: 1;
+    }
+
+    &:-ms-input-placeholder {
+      color: $color-placeholder !important;
+    }
+
+    &:-moz-placeholder {
+      color: $color-placeholder !important;
+      opacity: 1;
+    }
+  }
+
+  &__prefix {
+    left: 1px !important;
+  }
+}
+
+
+.el-select {
+  width: 100% !important;
+
+  &:hover {
+    .el-input__inner {
+      border-color: $color-text !important;
+    }
+  }
+
+  &--mini {
+    width: 40px !important;
+  }
+
+  &--small {
+    width: 50px !important;
+  }
+
+  &--center {
+    .el-input__inner {
+      height: 32px;
+      padding: 0 14px !important;
+      text-align: center;
+      text-overflow: unset;
+    }
+
+    .el-input__suffix {
+      display: none;
+    }
+  }
+
+  .el-input.is-focus {
+    .el-input__inner {
+      border-color: $color-text !important;
+    }
+  }
+
+  .el-input__inner:focus {
+    border-color: $color-text !important;
+  }
+}

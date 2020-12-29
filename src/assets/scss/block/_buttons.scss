@@ -1,0 +1,109 @@
+.button-icon {
+  &.el-button {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    padding: 0 !important;
+    background-color: $color-white !important;
+    border: none !important;
+
+    svg {
+      path {
+        fill: $color-text !important;
+      }
+
+      rect {
+        fill: $color-text !important;
+      }
+    }
+
+    &:hover {
+      background-color: $color-white !important;
+
+      svg {
+        path {
+          fill: $color-active !important;
+        }
+
+        rect {
+          fill: $color-active !important;
+        }
+      }
+    }
+  }
+}
+
+.el-button {
+  margin-right: 8px !important;
+  padding: 11px 20px !important;
+  border-radius: 32px !important;
+  background-color: $color-active !important;
+  font-size: 16px !important;
+  color: $color-white !important;
+  border: 1px solid $color-active !important;
+
+  &:last-of-type {
+    margin-right: 0 !important;
+  }
+
+  svg {
+    path {
+      fill: $color-white!important;
+    }
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $color-active-hover !important;
+    border-color: $color-active-hover !important;
+    color: $color-white !important;
+
+    svg {
+      path {
+        fill: $color-white !important;
+      }
+    }
+  }
+
+  &--primary {
+    color: $color-text !important;
+    border: $border-main !important;
+    background-color: $color-white !important;
+
+    svg {
+      path {
+        fill: $color-text !important;
+      }
+    }
+  }
+
+  &--mini {
+    padding: 4px 8px !important;
+    font-size: 12px !important;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  &--text {
+    border: none!important;
+    padding: 0!important;
+    color: $color-active !important;
+    background: transparent !important;
+
+    &:hover {
+      color: $color-active-hover !important;
+      background: transparent !important;
+    }
+  }
+
+  &.is-circle {
+    background-color: transparent !important;
+    border: none !important;
+    color: $color-text !important;
+  }
+}
