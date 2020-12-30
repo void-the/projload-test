@@ -3,7 +3,6 @@
   import Vue from "vue";
   import TableView from "../components/EntityTable/TableList";
   import { mapGetters } from "vuex";
-  import { PREPARE_VIEW_HANDLER } from "../store/modules/_prepareView";
   import { Logger } from '../main'
   import {MODAL_CREATE, MODAL_FILTER, MODAL_UPDATE} from "../consts";
 
@@ -15,7 +14,7 @@
     computed: {
       ...mapGetters([ 'getPageable' ]),
       pageable() {
-        return this.getPageable(this.entityType + '_SEARCH');
+        return this.getPageable(this.pageableName);
       },
       selectedItemName() {
         return this.selectedItem.name;
@@ -92,13 +91,6 @@
           }).catch(this.handleErrors);
         }
       },
-      showHistory(index) {
-        let id = null;
-        if (this.list[index]) {
-          id = this.list[index].id
-        }
-        this.$router.push({ name: 'History', params: { type: this.entityType, id, title: 'История изменений' } });
-      },
       prepareCreateForm() {
         return {};
       },
@@ -123,7 +115,6 @@
             }
           }
           this.searchForm = { ...this.form };
-          entityData = PREPARE_VIEW_HANDLER[this.entityType](entityData);
           this.filter = model;
           this.searchTags = [];
           for (let key in this.filter) {

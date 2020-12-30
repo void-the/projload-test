@@ -1,15 +1,8 @@
-//entity types
-export const entityTypes = {
-    DEFAULT: 'DEFAULT',
-    USERS: 'USERS',
-    CONTRACTS: 'CONTRACTS',
-    ACTIVITIES: 'ACTIVITIES'
-}
-
 export const roleType = {
     ADMIN: 'ADMIN',
     DEVELOPER: 'DEVELOPER',
-    RP: 'RP'
+    RP: 'RP',
+    ALL: 'ALL'
 };
 
 export const

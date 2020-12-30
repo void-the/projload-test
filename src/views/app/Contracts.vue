@@ -51,8 +51,7 @@
         MODAL_FILTER,
         MODAL_UPDATE,
         FIELD_SELECT,
-        roleType,
-        entityTypes
+        roleType
     } from "../../consts";
 
     export default {
@@ -61,7 +60,7 @@
         mixins: [EntityFormMixins],
         data() {
             return {
-                entityType: entityTypes.CONTRACTS,
+                pageableName: A_CONTRACTS_SEARCH,
                 params: {
                     search: true,
                     actions: true,

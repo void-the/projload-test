@@ -1,5 +1,6 @@
+import jwt_decode from "jwt-decode";
 import router from '../../router/index'
-import {routeNames, USERS, LOGIN} from '../../router/consts'
+import {routeNames, LOGIN} from '../../router/consts'
 import {
     urls,
     HTTP_REQUEST,
@@ -14,12 +15,27 @@ import {
     SET_TOKEN_REFRESH,
     SET_USER_PROFILE, A_TOKEN_REFRESH
 } from "../consts"
-import {roleType} from "../../consts";
+
+const decodeUser= (token) => {
+    if (token) {
+        const jwtDecodeInfo = jwt_decode(token.replace('Bearer ', ''))
+        return {
+            ...jwtDecodeInfo,
+            role: {
+                id: jwtDecodeInfo.roleId,
+                name: jwtDecodeInfo.roleName
+            }
+        }
+    } else {
+        return null
+    }
+}
 
 const token = localStorage.getItem('token')
 const refreshToken = localStorage.getItem('refreshToken')
 const rememberMe = (localStorage.getItem('rememberMe') === 'true')
-const user = null
+const user = decodeUser(token)
+
 
 const state = {
     token,
@@ -35,16 +51,14 @@ const getters = {
     refreshToken: state => state.refreshToken,
     user: state => state.user,
     rememberMe: state => state.rememberMe,
-    isIframe: state => state.isIframe,
-    isAdmin: state => state.user.roleId === roleType.ADMIN,
-    isRp: state => state.user.roleId === roleType.RP,
-    isDeveloper: state => state.user.roleId === roleType.DEVELOPER
+    isIframe: state => state.isIframe
 }
 
 const mutations = {
     [SET_AUTH](state, {accessToken, refreshToken}) {
         state.token = accessToken
         state.refreshToken = refreshToken
+        state.user = decodeUser(accessToken)
         localStorage.setItem('token', accessToken)
         localStorage.setItem('refreshToken', refreshToken)
     },
@@ -69,7 +83,7 @@ const mutations = {
 }
 
 const actions = {
-    [A_AUTH]({ commit, dispatch}, data) {
+    [A_AUTH]({commit, dispatch}, data) {
         return dispatch(HTTP_REQUEST,
             {
                 mutation: false,
@@ -81,7 +95,7 @@ const actions = {
                 }
             })
             .then((response) => {
-                    const { accessToken, refreshToken} = response
+                    const {accessToken, refreshToken} = response
                     commit(SET_AUTH, {
                         accessToken: `${accessToken}`,
                         refreshToken: `${refreshToken}`
@@ -110,9 +124,6 @@ const actions = {
                     accessToken: `${accessToken}`,
                     refreshToken: `${refreshToken}`
                 })
-            })
-            .then(() => {
-                dispatch(A_USER_PROFILE)
             })
             .catch(() => {
                 dispatch(A_LOGOUT)

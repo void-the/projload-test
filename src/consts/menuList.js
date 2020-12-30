@@ -1,5 +1,6 @@
 import {routeNames, langs, USERS, ACTIVITIES, CONTRACTS, REPORT} from "../router/consts";
 import {roleType} from "./index";
+import store from '../store'
 
 const menuList = [
     {
@@ -10,7 +11,7 @@ const menuList = [
     {
         name: routeNames[ACTIVITIES],
         title: langs[ACTIVITIES],
-        roles: [roleType.ADMIN, roleType.DEVELOPER, roleType.RP]
+        roles: [roleType.ALL]
     },
     {
         name: routeNames[CONTRACTS],
@@ -20,14 +21,17 @@ const menuList = [
     {
         name: routeNames[REPORT],
         title: langs[REPORT],
-        roles: [roleType.RP, roleType.ADMIN, roleType.DEVELOPER]
+        roles: [roleType.ALL]
     }
 ]
 
-export const getMenuList = (roleId) => {
-
+export const getMenuList = () => {
+    let user = store.getters.user
+    // eslint-disable-next-line
+    console.log('menuList user', user)
+    const roleId = user ? user.role.id : roleType.ALL
     return menuList.filter(el => {
-        return el.roles.includes(roleId)
+        return el.roles.includes(roleId) || el.roles.includes(roleType.ALL)
     })
 }
 

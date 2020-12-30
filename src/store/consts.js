@@ -56,6 +56,7 @@ export const SET_ACTIVITIES = 'SET_ACTIVITIES'
 
 //getters
 export const GET_LOADING = 'GET_LOADING'
+export const IS_LOADING = 'IS_LOADING'
 export const GET_USERS = 'GET_USERS'
 export const GET_USER_ROLE_LIST = 'GET_USER_ROLE_LIST'
 export const GET_CONTRACTS = 'GET_CONTRACTS'

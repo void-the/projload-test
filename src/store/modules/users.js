@@ -7,7 +7,6 @@ import {
     HTTP_SEARCH, SET_USER_ROLE_LIST,
     SET_USERS
 } from '../consts'
-import {Logger} from '../../main'
 
 const state = {
     list: [],
@@ -24,7 +23,6 @@ const mutations = {
         state.ids = data.map(item => item.id);
     },
     [SET_USER_ROLE_LIST](state, data) {
-        Logger.log(SET_USER_ROLE_LIST, data)
         state.roles = data
     }
 }

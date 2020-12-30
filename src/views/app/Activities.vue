@@ -36,7 +36,6 @@
     import EntityFormMixins from "../../mixins/EntityFormMixins";
     import EntityModal from "../../components/EntityTable/EntityModal";
     import {
-        entityTypes,
         FIELD_DATE,
         FIELD_HIDDEN, FIELD_LABEL,
         FIELD_SELECT,
@@ -60,7 +59,6 @@
         mixins: [EntityFormMixins],
         data() {
             return {
-                entityType: entityTypes.ACTIVITIES,
                 params: {
                     search: true,
                     actions: true,
@@ -76,6 +74,9 @@
                 contracts: GET_CONTRACTS,
                 users: GET_USERS
             }),
+            pageableName() {
+                return this.user.role.id === roleType.DEVELOPER ? A_ACTIVITIES_SEARCH_CURRENT_USER : A_ACTIVITIES_SEARCH
+            },
             columns() {
                 const columns = [
                     {label: 'ID', name: 'id', width: '100px'},

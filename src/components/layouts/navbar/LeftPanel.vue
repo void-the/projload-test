@@ -25,7 +25,6 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
   import menuList from '../../../consts/menuList'
   import { Logger } from '@/main'
 
@@ -37,12 +36,9 @@
       }
     },
     computed: {
-      ...mapGetters([
-        'user'
-      ]),
       getMenuList() {
-          return menuList(this.user.role.id)
-      },
+          return menuList()
+      }
     },
     methods: {
       openMenu (routeName) {

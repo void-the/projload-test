@@ -16,21 +16,6 @@
       </el-col>
       <el-col v-if="params.search" :span="1" />
       <el-col v-if="params.create !== false" :offset="params.search ? 1 : 0" :span="7">
-        <el-button v-if="false" class="el-button--primary" @click="handleHistory">
-          <span class="btn-inner-wrapper">
-            <svg
-              class="table-btn__icon"
-              version="1.1" xmlns="http://www.w3.org/2000/svg"
-              width="15"
-              height="15"
-              viewBox="0 0 16 16"
-            >
-              <path fill="#fff" d="M14 16v-11l-1 1v9h-12v-12h9l1-1h-11v14z" />
-              <path fill="#fff" d="M16 0h-5l1.8 1.8-6.8 6.8 1.4 1.4 6.8-6.8 1.8 1.8z" />
-            </svg>
-            История
-          </span>
-        </el-button>
         <el-button @click="handleClick" class="el-button--success">Создать</el-button>
       </el-col>
     </el-row>
@@ -66,11 +51,6 @@
       </el-table-column>
       <el-table-column align="right" v-if="params.actions">
         <template slot-scope="scope">
-          <el-button v-if="false" class="etButton" circle
-                     size="small"
-                     @click="(e) => handleHistory(scope.$index, e)" icon="el-icon-document-copy"
-          />
-
           <el-button class="etButton" circle v-if="params.editable"
                      size="small"
                      @click="(e) => handleEdit(scope.$index, e)" icon="el-icon-edit"
@@ -220,10 +200,6 @@
       },
       handleClick() {
         this.$emit('create');
-      },
-      handleHistory(index, e) {
-        e.stopPropagation();
-        this.$emit('showHistory', index);
       },
       handleEdit(index, e) {
         e.stopPropagation();

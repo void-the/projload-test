@@ -44,7 +44,6 @@
         GET_USERS
     } from "../../store/consts";
     import {
-        entityTypes,
         FIELD_CHECKBOX,
         FIELD_HIDDEN,
         FIELD_PASSWORD,
@@ -63,7 +62,7 @@
         mixins: [EntityForm],
         data() {
             return {
-                entityType: entityTypes.USERS,
+                pageableName: A_USERS_SEARCH,
                 params: {
                     search: true,
                     actions: true,

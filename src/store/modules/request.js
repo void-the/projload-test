@@ -13,7 +13,7 @@ import {
     HTTP_ERROR, HTTP_GET,
     HTTP_REQUEST,
     HTTP_RESPONSE, HTTP_SEARCH, SET_HTTP_ERROR,
-    SET_LOADING, SET_PAGEABLE, HTTP_POST, HTTP_PUT, HTTP_DELETE
+    SET_LOADING, SET_PAGEABLE, HTTP_POST, HTTP_PUT, HTTP_DELETE, IS_LOADING
 } from "../consts";
 import {BAD_REQUEST, INTERNAL_SERVER_ERROR, NOT_FOUND, UNAUTHORIZED} from "http-status-codes";
 
@@ -76,6 +76,9 @@ const getters = {
     },
     getPageable: (state) => (name) => {
         return state.pageable[name] || {};
+    },
+    [IS_LOADING](state) {
+        return Object.values(state.loading).includes('loading')
     },
     [GET_LOADING]: state => name => state.loading[name] || 'empty'
 }
