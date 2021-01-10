@@ -75,7 +75,7 @@
                     {label: 'ФИО', name: 'fullName'},
                     {label: 'Роль', name: 'role.name', width: '150px'},
                     {label: 'Ставка', name: 'rate', width: '100px'},
-                    {label: 'Активен', name: 'enabled', width: '100px'}
+                    {label: 'Активен', name: 'enabled', width: '100px', sortableOff: true}
                 ]
             }
         },
